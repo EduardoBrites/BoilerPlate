@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "Arena IoT",
+    "slug": "arena-iot",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#111827",
+    "sdkVersion": "54.0.0",
+    "platforms": ["ios", "android"],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.fiap.arenaiot"
+    },
+    "android": {
+      "adaptiveIcon": { "backgroundColor": "#111827" },
+      "package": "com.fiap.arenaiot"
+    },
+    "extra": { "disableShakeWarning": true }
+  }
+}

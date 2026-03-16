@@ -1,0 +1,7 @@
+{
+  "name": "aula-04-boilerplate",
+  "private": true,
+  "scripts": {
+    "init": "node init.js"
+  }
+}

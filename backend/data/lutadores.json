@@ -1,0 +1,22 @@
+[
+  { "id": "17",     "nome": "Naruto Uzumaki",    "anime": "Naruto",                  "imagemUrl": "https://cdn.myanimelist.net/images/characters/2/284121.jpg" },
+  { "id": "13",     "nome": "Sasuke Uchiha",     "anime": "Naruto",                  "imagemUrl": "https://cdn.myanimelist.net/images/characters/9/131317.jpg" },
+  { "id": "45627",  "nome": "Kakashi Hatake",    "anime": "Naruto",                  "imagemUrl": "https://cdn.myanimelist.net/images/characters/5/62968.jpg" },
+  { "id": "14",     "nome": "Sakura Haruno",     "anime": "Naruto",                  "imagemUrl": "https://cdn.myanimelist.net/images/characters/9/69275.jpg" },
+  { "id": "246658", "nome": "Son Goku",          "anime": "Dragon Ball",             "imagemUrl": "https://cdn.myanimelist.net/images/characters/9/46566.jpg" },
+  { "id": "913",    "nome": "Vegeta",            "anime": "Dragon Ball",             "imagemUrl": "https://cdn.myanimelist.net/images/characters/14/86185.jpg" },
+  { "id": "2090",   "nome": "Gohan",             "anime": "Dragon Ball",             "imagemUrl": "https://cdn.myanimelist.net/images/characters/12/48583.jpg" },
+  { "id": "2103",   "nome": "Piccolo",           "anime": "Dragon Ball",             "imagemUrl": "https://cdn.myanimelist.net/images/characters/8/45628.jpg" },
+  { "id": "40882",  "nome": "Eren Yeager",       "anime": "Attack on Titan",         "imagemUrl": "https://cdn.myanimelist.net/images/characters/10/216895.jpg" },
+  { "id": "40881",  "nome": "Mikasa Ackerman",   "anime": "Attack on Titan",         "imagemUrl": "https://cdn.myanimelist.net/images/characters/9/215563.jpg" },
+  { "id": "290124", "nome": "Levi Ackerman",     "anime": "Attack on Titan",         "imagemUrl": "https://cdn.myanimelist.net/images/characters/4/205157.jpg" },
+  { "id": "2285",   "nome": "Seiya de Pegaso",   "anime": "Cavaleiros do Zodiaco",   "imagemUrl": "https://cdn.myanimelist.net/images/characters/16/209321.jpg" },
+  { "id": "5922",   "nome": "Shiryu de Dragao",  "anime": "Cavaleiros do Zodiaco",   "imagemUrl": "https://cdn.myanimelist.net/images/characters/9/73690.jpg" },
+  { "id": "5921",   "nome": "Hyoga de Cisne",    "anime": "Cavaleiros do Zodiaco",   "imagemUrl": "https://cdn.myanimelist.net/images/characters/16/38895.jpg" },
+  { "id": "5925",   "nome": "Ikki de Fenix",     "anime": "Cavaleiros do Zodiaco",   "imagemUrl": "https://cdn.myanimelist.net/images/characters/7/73687.jpg" },
+  { "id": "40",     "nome": "Monkey D. Luffy",   "anime": "One Piece",               "imagemUrl": "https://cdn.myanimelist.net/images/characters/9/310307.jpg" },
+  { "id": "723",    "nome": "Roronoa Zoro",      "anime": "One Piece",               "imagemUrl": "https://cdn.myanimelist.net/images/characters/3/100534.jpg" },
+  { "id": "1354",   "nome": "Ichigo Kurosaki",   "anime": "Bleach",                  "imagemUrl": "https://cdn.myanimelist.net/images/characters/3/72326.jpg" },
+  { "id": "71",     "nome": "Light Yagami",      "anime": "Death Note",              "imagemUrl": "https://cdn.myanimelist.net/images/characters/6/63870.jpg" },
+  { "id": "1835",   "nome": "Edward Elric",      "anime": "Fullmetal Alchemist",     "imagemUrl": "https://cdn.myanimelist.net/images/characters/9/72533.jpg" }
+]
