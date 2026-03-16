@@ -1,31 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
-  View, Text, FlatList, Image, TouchableOpacity,
-  StyleSheet, ActivityIndicator, Alert,
-} from 'react-native';
+  View,
+  Text,
+  FlatList,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  ActivityIndicator,
+  Alert,
+} from "react-native";
 // TODO: descomente o import abaixo quando a funcao getPersonagens estiver pronta
-// import { getPersonagens } from '../services/api';
-import { Lutador, Equipe } from '../types';
+import { getPersonagens } from "../services/api";
+import { Lutador, Equipe } from "../types";
 
 // ─── Dados simulados (remover quando conectar ao backend) ───────────────────
 const PERSONAGENS_SIMULADOS: Lutador[] = [
   {
-    id: '1',
-    nome: 'Naruto Uzumaki',
-    anime: 'Naruto',
-    imagemUrl: 'https://cdn.myanimelist.net/images/characters/2/284121.jpg',
+    id: "1",
+    nome: "Naruto Uzumaki",
+    anime: "Naruto",
+    imagemUrl: "https://cdn.myanimelist.net/images/characters/2/284121.jpg",
   },
   {
-    id: '2',
-    nome: 'Son Goku',
-    anime: 'Dragon Ball',
-    imagemUrl: 'https://cdn.myanimelist.net/images/characters/9/46566.jpg',
+    id: "2",
+    nome: "Son Goku",
+    anime: "Dragon Ball",
+    imagemUrl: "https://cdn.myanimelist.net/images/characters/9/46566.jpg",
   },
   {
-    id: '3',
-    nome: 'Sasuke Uchiha',
-    anime: 'Naruto',
-    imagemUrl: 'https://cdn.myanimelist.net/images/characters/9/131317.jpg',
+    id: "3",
+    nome: "Sasuke Uchiha",
+    anime: "Naruto",
+    imagemUrl: "https://cdn.myanimelist.net/images/characters/9/131317.jpg",
   },
 ];
 
@@ -36,7 +42,11 @@ interface PersonagensProps {
   onLogout: () => void;
 }
 
-export default function Personagens({ nomeJogador, equipe, onLogout }: PersonagensProps) {
+export default function Personagens({
+  nomeJogador,
+  equipe,
+  onLogout,
+}: PersonagensProps) {
   const [personagens, setPersonagens] = useState<Lutador[]>([]);
   const [selecionado, setSelecionado] = useState<string | null>(null);
   const [carregando, setCarregando] = useState(true);
@@ -48,20 +58,19 @@ export default function Personagens({ nomeJogador, equipe, onLogout }: Personage
   const carregarPersonagens = async (): Promise<void> => {
     try {
       // TODO: Substitua os dados simulados pela chamada real ao backend
-      // const dados = await getPersonagens();
-      const dados = PERSONAGENS_SIMULADOS;
+      const dados = await getPersonagens();
 
       setPersonagens(dados);
     } catch (error: unknown) {
-      Alert.alert('Erro', 'Nao foi possivel carregar os personagens');
+      Alert.alert("Erro", "Nao foi possivel carregar os personagens");
     } finally {
       setCarregando(false);
     }
   };
 
-  const personagemSelecionado = personagens.find(p => p.id === selecionado);
+  const personagemSelecionado = personagens.find((p) => p.id === selecionado);
 
-  const corEquipe = equipe === Equipe.VERMELHO ? '#ef4444' : '#3b82f6';
+  const corEquipe = equipe === Equipe.VERMELHO ? "#ef4444" : "#3b82f6";
 
   // TODO: Implemente a funcao renderPersonagem
   // Ela recebe { item } do tipo { item: Lutador } e retorna React.JSX.Element
@@ -80,14 +89,15 @@ export default function Personagens({ nomeJogador, equipe, onLogout }: Personage
       <TouchableOpacity
         style={[
           styles.carta,
-          // TODO: adicione borda colorida quando estaSelecionado for true
-          // Dica: estaSelecionado && { borderColor: corEquipe, borderWidth: 3 }
+          estaSelecionado && { borderColor: corEquipe, borderWidth: 3 },
         ]}
         onPress={() => setSelecionado(item.id)}
-        activeOpacity={0.7}
       >
-        {/* TODO: Adicione o componente Image aqui */}
-        {/* Dica: <Image source={{ uri: item.imagemUrl }} style={styles.imagem} resizeMode="cover" /> */}
+        <Image
+          source={{ uri: item.imagemUrl }}
+          style={styles.imagem}
+          resizeMode="cover"
+        />
 
         <Text style={styles.nomePersonagem} numberOfLines={1}>
           {item.nome}
@@ -139,7 +149,9 @@ export default function Personagens({ nomeJogador, equipe, onLogout }: Personage
           />
           <View style={styles.infoDetalhe}>
             <Text style={styles.nomeDetalhe}>{personagemSelecionado.nome}</Text>
-            <Text style={styles.animeDetalhe}>{personagemSelecionado.anime}</Text>
+            <Text style={styles.animeDetalhe}>
+              {personagemSelecionado.anime}
+            </Text>
           </View>
         </View>
       ) : (
@@ -151,17 +163,15 @@ export default function Personagens({ nomeJogador, equipe, onLogout }: Personage
       )}
 
       {/* TODO: Adicione o FlatList horizontal aqui */}
-      {/* Dica:
-        <FlatList
-          data={personagens}
-          renderItem={renderPersonagem}
-          keyExtractor={(item: Lutador) => item.id}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.listaContainer}
-          style={styles.lista}
-        />
-      */}
+      <FlatList
+        data={personagens}
+        renderItem={renderPersonagem}
+        keyExtractor={(item: Lutador) => item.id}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.listaContainer}
+        style={styles.lista}
+      />
     </View>
   );
 }
@@ -170,56 +180,56 @@ export default function Personagens({ nomeJogador, equipe, onLogout }: Personage
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#111827',
+    backgroundColor: "#111827",
     paddingTop: 16,
   },
   containerCarregando: {
     flex: 1,
-    backgroundColor: '#111827',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#111827",
+    justifyContent: "center",
+    alignItems: "center",
   },
   textoCarregando: {
-    color: '#9ca3af',
+    color: "#9ca3af",
     marginTop: 16,
     fontSize: 16,
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingHorizontal: 20,
     marginBottom: 24,
   },
   bemVindo: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 22,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   equipeTexto: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginTop: 4,
   },
   botaoSair: {
-    backgroundColor: '#4b5563',
+    backgroundColor: "#4b5563",
     paddingVertical: 8,
     paddingHorizontal: 16,
     borderRadius: 8,
   },
   botaoSairTexto: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 14,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   tituloSecao: {
-    color: '#f20587',
+    color: "#f20587",
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     paddingHorizontal: 20,
   },
   subtituloSecao: {
-    color: '#6b7280',
+    color: "#6b7280",
     fontSize: 14,
     paddingHorizontal: 20,
     marginTop: 4,
@@ -233,68 +243,68 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   carta: {
-    backgroundColor: '#1f2937',
+    backgroundColor: "#1f2937",
     borderRadius: 12,
     marginHorizontal: 8,
     padding: 12,
     width: 160,
-    alignItems: 'center',
-    alignSelf: 'flex-start',
+    alignItems: "center",
+    alignSelf: "flex-start",
     borderWidth: 2,
-    borderColor: '#374151',
+    borderColor: "#374151",
   },
   imagem: {
     width: 120,
     height: 120,
     borderRadius: 8,
-    backgroundColor: '#374151',
+    backgroundColor: "#374151",
   },
   nomePersonagem: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 14,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginTop: 8,
-    textAlign: 'center',
+    textAlign: "center",
   },
   animePersonagem: {
-    color: '#9ca3af',
+    color: "#9ca3af",
     fontSize: 12,
     marginTop: 2,
-    textAlign: 'center',
+    textAlign: "center",
   },
   detalhe: {
-    flexDirection: 'row',
-    backgroundColor: '#1f2937',
+    flexDirection: "row",
+    backgroundColor: "#1f2937",
     margin: 20,
     padding: 16,
     borderRadius: 12,
-    alignItems: 'center',
+    alignItems: "center",
     minHeight: 120,
   },
   imagemDetalhe: {
     width: 80,
     height: 80,
     borderRadius: 8,
-    backgroundColor: '#374151',
+    backgroundColor: "#374151",
   },
   infoDetalhe: {
     flex: 1,
     marginLeft: 16,
   },
   nomeDetalhe: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   animeDetalhe: {
-    color: '#9ca3af',
+    color: "#9ca3af",
     fontSize: 14,
     marginTop: 4,
   },
   instrucaoSelecao: {
-    color: '#6b7280',
+    color: "#6b7280",
     fontSize: 16,
-    textAlign: 'center',
+    textAlign: "center",
     flex: 1,
   },
 });

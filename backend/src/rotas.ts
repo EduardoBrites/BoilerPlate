@@ -55,9 +55,9 @@ app.post('/api/login', (req, res) => {
 // Dica: res.json() envia um array ou objeto como resposta JSON.
 //
 // TODO: descomente e complete a rota abaixo
-// app.get('/api/personagens', (_req, res) => {
-//   // Retorne lutadoresJson como resposta
-// });
+app.get('/api/personagens', (_req, res) => {
+  res.json(lutadoresJson);
+});
 
 // ─── Rotas protegidas (prontas da Aula 03) ─────────────────────────────────
 app.get('/api/alunos', authMiddleware, (_req, res) => {

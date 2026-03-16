@@ -3,7 +3,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import Login from './screens/Login';
 // TODO: descomente o import abaixo quando a tela Personagens estiver pronta
-// import Personagens from './screens/Personagens';
+import Personagens from './screens/Personagens';
 import { Equipe, Tela } from './types';
 import { removerToken } from './services/storage';
 
@@ -40,25 +40,11 @@ export default function App() {
         )}
         {telaAtual === Tela.PERSONAGENS && (
           // TODO: Substitua este placeholder pela tela Personagens
-          // <Personagens
-          //   nomeJogador={nomeJogador}
-          //   equipe={equipeJogador}
-          //   onLogout={handleLogout}
-          // />
-          <View style={styles.placeholder}>
-            <Text style={styles.placeholderTitulo}>
-              Ola, {nomeJogador}!
-            </Text>
-            <Text style={[styles.placeholderEquipe, { color: corEquipe }]}>
-              Equipe {equipeJogador}
-            </Text>
-            <Text style={styles.placeholderTexto}>
-              Tela de Personagens em construcao...
-            </Text>
-            <TouchableOpacity style={styles.botaoSair} onPress={handleLogout}>
-              <Text style={styles.botaoSairTexto}>Sair</Text>
-            </TouchableOpacity>
-          </View>
+          <Personagens
+            nomeJogador={nomeJogador}
+            equipe={equipeJogador}
+            onLogout={handleLogout}
+          />
         )}
       </SafeAreaView>
     </SafeAreaProvider>
